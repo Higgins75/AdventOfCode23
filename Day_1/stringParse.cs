@@ -21,7 +21,7 @@ class stringParse
             {
                 firstDigit = testNum;
                 firstDigitPosition = i;
-                Console.WriteLine("First digit set to {0} at {1}", firstDigit, firstDigitPosition);
+                //Console.WriteLine("First digit set to {0} at {1}", firstDigit, firstDigitPosition);
             }
 
             //overrides the secondDigit variable if a number is found after the first was located
@@ -29,7 +29,7 @@ class stringParse
             {
                 secondDigit = testNum;
                 secondDigitPosition = i;
-                Console.WriteLine("Second digit set to {0} at {1}", secondDigit, secondDigitPosition);
+                //Console.WriteLine("Second digit set to {0} at {1}", secondDigit, secondDigitPosition);
             }
         }
 
@@ -45,13 +45,13 @@ class stringParse
                 {
                     firstDigit = i + 1;
                     firstDigitPosition = digitPosition;
-                    Console.WriteLine("First digit set to {0} at {1}", firstDigit, firstDigitPosition);
+                    //Console.WriteLine("First digit set to {0} at {1}", firstDigit, firstDigitPosition);
                 }
                 if (index.checkLast(secondDigitPosition, digitPosition))
                 {
                     secondDigit = i + 1;
                     secondDigitPosition = digitPosition;
-                    Console.WriteLine("Second digit set to {0} at {1}", secondDigit, secondDigitPosition);
+                    //Console.WriteLine("Second digit set to {0} at {1}", secondDigit, secondDigitPosition);
                 }
             }
         }
