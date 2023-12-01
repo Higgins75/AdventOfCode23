@@ -15,8 +15,8 @@ class Program
         int total = 0;
 
         //creates a list of strings from the file given
-        string[] ArrayList = f.readFile("day_1.txt");
-        //string[] ArrayList = ["twone"];
+        //string[] ArrayList = f.readFile("day_1.txt");
+        string[] ArrayList = ["fivefiveggrbf8vcdftdpzhc68fiveggr"];
 
         //iterates through the list, adding the digits to the total
         for (int i = 0; i < ArrayList.Length; i++)

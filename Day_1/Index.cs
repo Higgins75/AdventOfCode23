@@ -9,4 +9,9 @@ public class Index
     {
         return CurrentIndex >= initialIndex;
     }
+
+    public int CountWords(string text, string word) {
+        int count = (text.Length - text.Replace(word, "").Length) / word.Length;
+        return count;
+}
 }
