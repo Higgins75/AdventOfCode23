@@ -14,7 +14,7 @@ class stringParse
             int testNum = c.ChartoInt(testInput[i]);
             if (c.isNumber(testNum) & firstInput == true)
             {
-                firstDigit = testNum * 10;
+                firstDigit = testNum;
                 firstInput = false;
             }
             else if (c.isNumber(testNum) & firstInput == false)
@@ -26,8 +26,8 @@ class stringParse
 
         if (secondInput == false)
         {
-            secondDigit = firstDigit / 10;
+            secondDigit = firstDigit;
         }
-        return firstDigit + secondDigit;
+        return firstDigit * 10 + secondDigit;
     }
 }

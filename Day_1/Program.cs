@@ -8,33 +8,11 @@ class Program
     static void Main()
     {
         stringParse p = new stringParse();
+        fileReader f = new fileReader();
 
-        int totalInputs = 0;
         int total = 0;
-        List<string> inputStrings = new List<string>();
 
-        try
-        {
-            using (StreamReader sr = new StreamReader("day_1.txt"))
-            {
-                string line;
-
-                while ((line = sr.ReadLine()) != null)
-                {
-                    inputStrings.Add(line);
-                    totalInputs += 1;
-                }
-            }
-        }
-            catch (Exception e)
-            {
-                // Let the user know what went wrong.
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
-        
-        string [] ArrayList = inputStrings.ToArray();
-
+        string[] ArrayList = f.readFile("day_1.txt");
 
         for (int i = 0; i < ArrayList.Length; i++)
         {
