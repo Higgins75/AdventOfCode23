@@ -10,74 +10,87 @@ class stringParse
         int firstDigit = 0;
         int firstDigitPosition = testInput.Length;
         int secondDigit = 0;
-        int secondDigitPosition = 0;
-        int timesCommited = 0;
+        int secondDigitPosition = testInput.Length;
 
+        
+        bool firstDigitLocated = false;
+        bool secondDigitLocated = false;
 
-        for (int i = 0; i < testInput.Length; i++)
-        {  
-            //init variable
-            int testNum = c.ChartoInt(testInput[i]);
-            int digitPosition = i;
-            //if a number is earlier than the saved first digit position, saves as first digit
-            if (c.isNumber(testNum) & index.checkFirst(firstDigitPosition, digitPosition))
+        string reverseInput = index.Reverse(testInput);
+
+        while (firstDigitLocated == false)
+        {
+            for (int i = 0; i < testInput.Length; i++)
             {
-                firstDigit = testNum;
-                firstDigitPosition = i;
-                timesCommited++;
-                Console.WriteLine("First digit set to {0} at {1}", firstDigit, firstDigitPosition);
+                int testNum = c.ChartoInt(testInput[i]);
+                int digitPosition = i;
+                if (c.isNumber(testNum))
+                {
+                    firstDigit = testNum;
+                    firstDigitPosition = i;
+                    firstDigitLocated = true;
+                    Console.WriteLine("first num is {0} at location {1}", firstDigit, firstDigitPosition);
+                    break;
+                }
             }
-
-            //if a number is later than the second digit saved position, saves as second digit
-            if (c.isNumber(testNum) & index.checkLast(secondDigitPosition, digitPosition))
-            {
-                secondDigit = testNum;
-                secondDigitPosition = i;
-                timesCommited++;
-                Console.WriteLine("Second digit set to {0} at {1}", secondDigit, secondDigitPosition);
-            }
+            Console.WriteLine("escape");
+            firstDigitLocated = true;
         }
 
+        while (secondDigitLocated == false)
+        {
+            for (int i = 0; i < testInput.Length; i++)
+            {
+                int testNum = c.ChartoInt(reverseInput[i]);
+                int digitPosition = i;
+                if (c.isNumber(testNum))
+                {
+                    secondDigit = testNum;
+                    secondDigitPosition = i;
+                    secondDigitLocated = true;
+                    Console.WriteLine("second num is {0} at location {1}", secondDigit, secondDigitPosition);     
+                    break;               
+                }
+            }
+            Console.WriteLine("escape");                
+            secondDigitLocated = true;
+        }     
+
+
         string[] numberList = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+        string[] reverseNumberList = ["eno", "owt", "eerht", "ruof", "evif", "xis", "neves", "thgie", "enin"];
 
         for (int i = 0; i < numberList.Length; i++)
         {
             bool isPresent = testInput.Contains(numberList[i]);
             if (isPresent)
             {
-                int numberOfOccurances = index.CountWords(testInput, numberList[i]);
-                Console.WriteLine("Number of occurances is {0}", numberOfOccurances);
-                string tempTestInput = testInput;
-                for (int j = 0; j < numberOfOccurances; j++)
+                int digitPosition = testInput.IndexOf(numberList[i]);
+                if (digitPosition < firstDigitPosition)
                 {
-                    int digitPosition = tempTestInput.IndexOf(numberList[i]);
-                    Console.WriteLine("Digit positon is {0}", digitPosition);
-                    if (index.checkFirst(firstDigitPosition, digitPosition))
-                    {
-                        firstDigit = i + 1;
-                        firstDigitPosition = digitPosition;
-                        timesCommited++;
-                        Console.WriteLine("First digit set to {0} at {1}", firstDigit, firstDigitPosition);
-                    }
-                    if (index.checkLast(secondDigitPosition, digitPosition))
-                    {
-                        secondDigit = i + 1;
-                        secondDigitPosition = digitPosition;
-                        timesCommited++;
-                        Console.WriteLine("Second digit set to {0} at {1}", secondDigit, secondDigitPosition);
-                    }            
-                    tempTestInput = tempTestInput.Substring(digitPosition + numberList[i].Length); 
-                    Console.WriteLine("occured");    
+                    firstDigit = i + 1;
+                    firstDigitPosition = digitPosition;
+                    Console.WriteLine("first num is {0} at location {1}", firstDigit, firstDigitPosition);
                 }
-
             }
         }
 
-        //multiples digit 1 by 10, adds it to second digit to get a correct value. Returns out of function
-        if (timesCommited == 1)
+        for (int i = 0; i < reverseNumberList.Length; i++)
         {
-            return firstDigit;
+            bool isPresent = reverseInput.Contains(reverseNumberList[i]);
+            if (isPresent)
+            {
+                int digitPosition = reverseInput.IndexOf(reverseNumberList[i]);
+                if (digitPosition < secondDigitPosition)
+                {
+                    secondDigit = i + 1;
+                    secondDigitPosition = digitPosition;
+                    Console.WriteLine("second num is {0} at location {1}", secondDigit, secondDigitPosition);                     
+                }
+            }
         }
-        else return firstDigit * 10 + secondDigit;
+
+        return firstDigit * 10 + secondDigit;
+
     }
 }
