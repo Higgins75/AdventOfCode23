@@ -7,8 +7,9 @@ class Day_3_Program
         fileReader f = new fileReader();
         Operations o = new Operations();
 
-        // string[] testCase = ["467..114..", "...*......", "..35..633.", "......#...", "617*......", ".....+.58.", "..592.....", "......755.", "...$.*....", ".664.598.."];
-        string[] testCase = ["467..114..", "...*......", "..35..633."];
+        // string[] testCase = f.readFile
+        string[] testCase = ["467..114..", "...*......", "..35..633.", "......#...", "617*......", ".....+.58.", "..592.....", "......755.", "...$.*....", ".664.598.."];
+        // string[] testCase = ["617*......", "...*......", "..35..633."];
         int sum = 0;
 
 
@@ -16,7 +17,9 @@ class Day_3_Program
         for (int i = 0; i < testCase.Length;i++)
         {
             string stringToTest = testCase[i];
+            // Console.WriteLine(stringToTest);
             
+
             string adjacentString1 = null;
             string adjacentString2 = null;
 
@@ -28,6 +31,10 @@ class Day_3_Program
             {
                 adjacentString2 = testCase[i + 1];
             }
+            // Console.WriteLine(adjacentString1);
+            // Console.WriteLine(adjacentString2);
+
+            string[] parallelstrings = [adjacentString1, adjacentString2];
 
             List<LocationValues> locationValues = new List<LocationValues>();
 
@@ -40,27 +47,43 @@ class Day_3_Program
                     locationValues.Add(new LocationValues() {location = j, value = o.getASCIIValue(stringToTest[j])});
                     // Console.WriteLine("Added {0} at {1} to List", locationValues[^1].value, locationValues[^1].location);
                 }
-                // else Console.WriteLine("location {0} is not a number", j);
+                // else Console.WriteLine("location {0} is {1}", j, o.getASCIIValue(stringToTest[j]));
             }
 
             //trying to determine what the numbers ACTUALLY ARE
             for (int k = 0; k < locationValues.Count; k++)
             {
                 int numToAdd = 0;
+                int firstValueLocation = 0;
+                int secondValueLocation = 0;
+                bool firstValueSet = false;
 
                 while (o.hasAdjacentValue(locationValues, k))
                 {
                     // Console.WriteLine("Adjacent value present");
                     numToAdd = numToAdd * 10 + locationValues[k].value;
+                    if (!firstValueSet)
+                    {
+                        firstValueSet = true;
+                        firstValueLocation = locationValues[k].location;
+                    }
                     // Console.WriteLine(numToAdd);
                     k++;
                 }
                 numToAdd = numToAdd * 10 + locationValues[k].value;
+                secondValueLocation = locationValues[k].location;
+
+                // Console.WriteLine("first location {0}, second location {1}, num to add {2}", firstValueLocation, secondValueLocation, numToAdd);
                 Console.WriteLine(numToAdd);
-                // sum = sum + numToAdd;
+
+                if (o.checkEnginePart(locationValues, parallelstrings, firstValueLocation, secondValueLocation, stringToTest.Length, stringToTest))
+                {
+                    sum = sum + numToAdd;
+                }
+                // Console.WriteLine("First value at {0} and second value at {1}", firstValueLocation, secondValueLocation);
             }
         }
 
-        // Console.WriteLine(sum);
+        Console.WriteLine(sum);
     }
 }
