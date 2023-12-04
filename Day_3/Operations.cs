@@ -10,7 +10,7 @@ class Operations
     public bool isNum(char test)
     {
         int value = Convert.ToInt32(test);
-        if (value > 48 && value < 58)
+        if (value > 47 && value < 58)
         {
             return true;
         }
@@ -51,7 +51,7 @@ class Operations
         }
         // else Console.WriteLine("first value is {0}", firstValueLocation);
 
-        if (secondValueLocation != stringLength)
+        if (secondValueLocation != stringLength - 1)
         {
             secondValueLocation = secondValueLocation + 1;
             // Console.WriteLine("second value is {0}", secondValueLocation);
@@ -65,7 +65,7 @@ class Operations
                 Console.WriteLine("num is valid");
                 return true;
             } 
-            else Console.WriteLine("location {0} contains {1}", firstValueLocation - 1, getASCIIValue(testCase[firstValueLocation - 1]));
+            // else Console.WriteLine("location {0} contains {1}", firstValueLocation - 1, getASCIIValue(testCase[firstValueLocation - 1]));
         }
 
         if (secondValueLocation < stringLength - 1)
@@ -75,7 +75,7 @@ class Operations
                 Console.WriteLine("num is valid");
                 return true;
             } 
-            else Console.WriteLine("location {0} contains {1}", secondValueLocation + 1, getASCIIValue(testCase[secondValueLocation + 1]));
+            // else Console.WriteLine("location {0} contains {1}", secondValueLocation + 1, getASCIIValue(testCase[secondValueLocation + 1]));
         }
 
         for (int i = firstValueLocation; i <= secondValueLocation; i++)
@@ -89,7 +89,7 @@ class Operations
                     Console.WriteLine("num is valid");
                     return true;
                 }
-                else Console.WriteLine("location {0} contains {1}", i, getASCIIValue(adjacentString1[i]));
+                // else Console.WriteLine("location {0} contains {1}", i, getASCIIValue(adjacentString1[i]));
             }
             if (parallelstrings[1] != null)
             {
@@ -100,7 +100,7 @@ class Operations
                     Console.WriteLine("num is valid");
                     return true;
                 }
-                else Console.WriteLine("location {0} contains {1}", i, getASCIIValue(adjacentString2[i]));
+                // else Console.WriteLine("location {0} contains {1}", i, getASCIIValue(adjacentString2[i]));
             }
         }
         Console.WriteLine("num is not valid");
