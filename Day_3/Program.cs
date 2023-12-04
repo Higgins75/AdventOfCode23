@@ -74,7 +74,7 @@ class Day_3_Program
                 secondValueLocation = locationValues[k].location;
 
                 // Console.WriteLine("first location {0}, second location {1}, num to add {2}", firstValueLocation, secondValueLocation, numToAdd);
-                Console.WriteLine(numToAdd);
+                // Console.WriteLine(numToAdd);
 
                 if (o.checkEnginePart(locationValues, parallelstrings, firstValueLocation, secondValueLocation, stringToTest.Length, stringToTest))
                 {

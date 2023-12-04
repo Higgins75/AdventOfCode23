@@ -62,7 +62,7 @@ class Operations
         {
             if (!isNum(testCase[firstValueLocation]) && !isFullStop(testCase[firstValueLocation]))
             {
-                Console.WriteLine("num is valid");
+                // Console.WriteLine("num is valid");
                 return true;
             } 
             // else Console.WriteLine("location {0} contains {1}", firstValueLocation - 1, getASCIIValue(testCase[firstValueLocation - 1]));
@@ -72,7 +72,7 @@ class Operations
         {
             if (!isNum(testCase[secondValueLocation]) && !isFullStop(testCase[secondValueLocation]))
             {
-                Console.WriteLine("num is valid");
+                // Console.WriteLine("num is valid");
                 return true;
             } 
             // else Console.WriteLine("location {0} contains {1}", secondValueLocation + 1, getASCIIValue(testCase[secondValueLocation + 1]));
@@ -86,7 +86,7 @@ class Operations
                 // Console.WriteLine("Testing string {0} for char at location {1}", adjacentString1, i);
                 if (!isNum(adjacentString1[i]) && !isFullStop(adjacentString1[i]))
                 {
-                    Console.WriteLine("num is valid");
+                    // Console.WriteLine("num is valid");
                     return true;
                 }
                 // else Console.WriteLine("location {0} contains {1}", i, getASCIIValue(adjacentString1[i]));
@@ -97,13 +97,13 @@ class Operations
                 // Console.WriteLine("Testing string {0} for char at location {1}", adjacentString2, i);
                 if (!isNum(adjacentString2[i]) && !isFullStop(adjacentString2[i]))
                 {
-                    Console.WriteLine("num is valid");
+                    // Console.WriteLine("num is valid");
                     return true;
                 }
                 // else Console.WriteLine("location {0} contains {1}", i, getASCIIValue(adjacentString2[i]));
             }
         }
-        Console.WriteLine("num is not valid");
+        // Console.WriteLine("num is not valid");
         return false;
     }
 }
