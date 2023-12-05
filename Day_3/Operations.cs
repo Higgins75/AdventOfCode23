@@ -28,6 +28,16 @@ class Operations
         return false;
     }
 
+    public bool isAsterisk(char test)
+    {
+        int value = Convert.ToInt32(test);
+        if (value == 42)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool hasAdjacentValue(List<LocationValues> locationValues, int listPosition)
     {
 
