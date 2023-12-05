@@ -18,21 +18,29 @@ class Day_3_Program
 
             string adjacentString1 = null;
             string adjacentString2 = null;
+            string adjacentString3 = null;
 
+            //this returns the string above target string
             if (i > 0)
             {
                 adjacentString1 = testCase[i - 1];
             }
+
+            //this returns the strings below target string
             if (i < testCase.Length - 1)
             {
                 adjacentString2 = testCase[i + 1];
             }
+            if (i < testCase.Length - 2)
+            {
+                adjacentString3 = testCase[i + 2];
+            }
 
-            string[] parallelstrings = [adjacentString1, adjacentString2];
-
-            List<LocationValues> locationValues = new List<LocationValues>();
+            //stores adjacent strings as an array for easier processing
+            string[] parallelstrings = [adjacentString1, adjacentString2, adjacentString3];
 
             //generates a list of number values within a string, and stores the value itself and their location
+            List<LocationValues> locationValues = new List<LocationValues>();
             for (int j = 0; j < stringToTest.Length; j++)
             {
                 if (o.isNum(stringToTest[j]))
@@ -68,15 +76,14 @@ class Day_3_Program
                     firstValueLocation = secondValueLocation;
                 }
 
-                Console.WriteLine(numToAdd);
-
+                //checks if Engine Part, if yes add to sum
                 if (o.checkEnginePart(locationValues, parallelstrings, firstValueLocation, secondValueLocation, stringToTest.Length, stringToTest))
                 {
                     sum = sum + numToAdd;
                 }
             }
         }
-
+        //print sum total
         Console.WriteLine(sum);
     }
 }
