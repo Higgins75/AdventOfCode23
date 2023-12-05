@@ -4,11 +4,14 @@ class Day_3_Program
 {
     static void Main()
     {
+        //initialise functions and set up the total (sum) variable
         fileReader f = new fileReader();
         Operations o = new Operations();
-
-        string[] testCase = f.readFile("Day_3.txt");
         int sum = 0;
+
+        //reads input from .txt file
+        string[] testCase = f.readFile("Day_3.txt");
+        
 
 
 
@@ -20,13 +23,13 @@ class Day_3_Program
             string adjacentString2 = null;
             string adjacentString3 = null;
 
-            //this returns the string above target string
+            //this assigns the string above target string
             if (i > 0)
             {
                 adjacentString1 = testCase[i - 1];
             }
 
-            //this returns the strings below target string
+            //this assigns the strings below target string
             if (i < testCase.Length - 1)
             {
                 adjacentString2 = testCase[i + 1];
