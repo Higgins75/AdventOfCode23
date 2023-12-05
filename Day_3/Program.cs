@@ -8,8 +8,6 @@ class Day_3_Program
         Operations o = new Operations();
 
         string[] testCase = f.readFile("Day_3.txt");
-        // string[] testCase = ["467..114..", "...*......", "..35..633.", "......#...", "617*......", ".....+.58.", "..592.....", "......755.", "...$.*....", ".664.598.."];
-        // string[] testCase = ["......949................-.....................351.........................557...........777..........454..538......625................120..",  ".......*......242.....201.............953........*......$..957.163...636......-...............-.............*...777..*..............&.......", "......169.....$............538...249.......840...900...256....*........*.229...........110.196..............699....*..502..........861.*...."];
         int sum = 0;
 
 
@@ -17,8 +15,6 @@ class Day_3_Program
         for (int i = 0; i < testCase.Length; i++)
         {
             string stringToTest = testCase[i];
-            Console.WriteLine(stringToTest);
-            
 
             string adjacentString1 = null;
             string adjacentString2 = null;
@@ -31,8 +27,6 @@ class Day_3_Program
             {
                 adjacentString2 = testCase[i + 1];
             }
-            // Console.WriteLine(adjacentString1);
-            // Console.WriteLine(adjacentString2);
 
             string[] parallelstrings = [adjacentString1, adjacentString2];
 
@@ -43,11 +37,8 @@ class Day_3_Program
             {
                 if (o.isNum(stringToTest[j]))
                 {
-                    // Console.WriteLine("location {0} is num", j);
                     locationValues.Add(new LocationValues() {location = j, value = o.getASCIIValue(stringToTest[j])});
-                    // Console.WriteLine("Added {0} at {1} to List", locationValues[^1].value, locationValues[^1].location);
                 }
-                // else Console.WriteLine("location {0} is {1}", j, o.getASCIIValue(stringToTest[j]));
             }
 
             //trying to determine what the numbers ACTUALLY ARE
@@ -60,27 +51,29 @@ class Day_3_Program
 
                 while (o.hasAdjacentValue(locationValues, k))
                 {
-                    // Console.WriteLine("Adjacent value present");
                     numToAdd = numToAdd * 10 + locationValues[k].value;
                     if (!firstValueSet)
                     {
                         firstValueSet = true;
                         firstValueLocation = locationValues[k].location;
                     }
-                    // Console.WriteLine(numToAdd);
                     k++;
                 }
                 numToAdd = numToAdd * 10 + locationValues[k].value;
                 secondValueLocation = locationValues[k].location;
+                
+                //to account for single digit responses
+                if (firstValueLocation == 0)
+                {
+                    firstValueLocation = secondValueLocation;
+                }
 
-                // Console.WriteLine("first location {0}, second location {1}, num to add {2}", firstValueLocation, secondValueLocation, numToAdd);
-                // Console.WriteLine(numToAdd);
+                Console.WriteLine(numToAdd);
 
                 if (o.checkEnginePart(locationValues, parallelstrings, firstValueLocation, secondValueLocation, stringToTest.Length, stringToTest))
                 {
                     sum = sum + numToAdd;
                 }
-                // Console.WriteLine("First value at {0} and second value at {1}", firstValueLocation, secondValueLocation);
             }
         }
 
