@@ -56,10 +56,11 @@ class Operations
     {
         int gearValue = 0;
 
+        //initialises strings from array
         string belowOneString = parrallelstrings[1];
         string belowTwoString = parrallelstrings[2];
         
-        //check horizontal values
+        //sets values correctly
         if (firstValueLocation != 0)
         {
             firstValueLocation = firstValueLocation - 1;
@@ -69,7 +70,8 @@ class Operations
         {
             secondValueLocation = secondValueLocation + 1;
         }
-
+        
+        //checks if there is an asterisk to the right, if so generates the value of the gear next to it
         if (isAsterisk(testCase[secondValueLocation]))
         {
             secondValueLocation++;
