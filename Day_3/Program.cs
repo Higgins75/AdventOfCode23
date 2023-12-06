@@ -9,6 +9,8 @@ class Day_3_Program
         Operations o = new Operations();
         int sum = 0;
 
+        
+
         //reads input from .txt file
         string[] testCase = f.readFile("Day_3.txt");
         
@@ -80,7 +82,7 @@ class Day_3_Program
                 }
 
                 //checks if Engine Part, if yes add to sum
-                if (o.checkEnginePart(locationValues, parallelstrings, firstValueLocation, secondValueLocation, stringToTest.Length, stringToTest))
+                if (o.checkEnginePart(locationValues, parallelstrings, firstValueLocation, secondValueLocation, stringToTest))
                 {
                     sum = sum + numToAdd;
                 }

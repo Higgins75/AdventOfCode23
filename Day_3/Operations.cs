@@ -52,14 +52,64 @@ class Operations
         return false;
     }
 
-    public bool checkEnginePart(List<LocationValues> locationValues, string[] parallelstrings, int firstValueLocation, int secondValueLocation, int stringLength, string testCase)
+    public int isGear(List<LocationValues> locationValues, string[] parrallelstrings, int firstValueLocation, int secondValueLocation, string testCase)
+    {
+        int gearValue = 0;
+
+        string belowOneString = parrallelstrings[1];
+        string belowTwoString = parrallelstrings[2];
+        
+        //check horizontal values
+        if (firstValueLocation != 0)
+        {
+            firstValueLocation = firstValueLocation - 1;
+        }        
+
+        if (secondValueLocation != testCase.Length - 1)
+        {
+            secondValueLocation = secondValueLocation + 1;
+        }
+
+        if (isAsterisk(testCase[secondValueLocation]))
+        {
+            secondValueLocation++;
+            while (isNum(testCase[secondValueLocation]))
+            {
+                if (gearValue != 0)
+                {
+                    gearValue += (gearValue * 10) + getASCIIValue(testCase[secondValueLocation]);
+                    if (secondValueLocation != testCase.Length - 1)
+                    {
+                        secondValueLocation++;
+                    }
+                }
+                gearValue += getASCIIValue(testCase[firstValueLocation]);
+                if (secondValueLocation != testCase.Length - 1)
+                {
+                    secondValueLocation++;
+                }
+            }
+        }
+
+        for (int i = firstValueLocation; i < secondValueLocation; i++)
+        {
+            if (isAsterisk(belowOneString[i]))
+            {
+                //some code
+            }
+        }
+
+        return gearValue;
+    }
+
+    public bool checkEnginePart(List<LocationValues> locationValues, string[] parallelstrings, int firstValueLocation, int secondValueLocation, string testCase)
     {
         if (firstValueLocation != 0)
         {
             firstValueLocation = firstValueLocation - 1;
         }
 
-        if (secondValueLocation != stringLength - 1)
+        if (secondValueLocation != testCase.Length - 1)
         {
             secondValueLocation = secondValueLocation + 1;
         }
@@ -72,7 +122,7 @@ class Operations
             } 
         }
 
-        if (secondValueLocation < stringLength)
+        if (secondValueLocation < testCase.Length)
         {
             if (!isNum(testCase[secondValueLocation]) && !isFullStop(testCase[secondValueLocation]))
             {
