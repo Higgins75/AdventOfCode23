@@ -93,11 +93,12 @@ class Operations
             }
         }
 
+        //needs to find values in the lines below
         for (int i = firstValueLocation; i < secondValueLocation; i++)
         {
             if (isAsterisk(belowOneString[i]))
             {
-                //some code
+                //some code - generate string below. Locate numbers within range. Add those numbers together **correctly**
             }
         }
 
