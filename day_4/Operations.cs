@@ -18,8 +18,7 @@ class Operations
         {
             if (isNum(card[i]))
             {
-                //locationValues.Add(new LocationValues() {location = j, value = o.getASCIIValue(stringToTest[j])});
-                NumberList.Add(getASCIIValue(card[i]) * 10 + getASCIIValue(card[i + 1]));
+                NumberList.Add(getASCIIValue(getDigit(card, i++)) * 10 + getASCIIValue(getDigit(card, i)));
                 i++;
             }
         }
@@ -38,6 +37,15 @@ class Operations
     public int getASCIIValue(char test)
     {
         return Convert.ToInt32(test - 48);
+    }
+
+    public char getDigit(string card, int index)
+    {
+    if (index >= 0 && index < card.Length) 
+    {
+        return card[index];
+    }
+    return '\0';
     }
     
 }
