@@ -19,7 +19,7 @@ class Operations
             if (isNum(card[i]))
             {
                 //locationValues.Add(new LocationValues() {location = j, value = o.getASCIIValue(stringToTest[j])});
-                NumberList.Add(getASCIIValue(card[i]) * 10 + getASCIIValue[card[i + 1]]);
+                NumberList.Add(getASCIIValue(card[i]) * 10 + getASCIIValue(card[i + 1]));
                 i++;
             }
         }
