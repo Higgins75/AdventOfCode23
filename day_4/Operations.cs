@@ -1,3 +1,5 @@
+using System.Text.RegularExpressions;
+
 class Operations
 {
     public string[] StringCleaner(string toClean)
@@ -11,15 +13,17 @@ class Operations
         return stringArray;
     }
 
-    public List<int> GenerateNumberList(string card)
+    public List<int> GenerateNumberList(string input)
     {
         List<int> NumberList = new List<int>();
-        for (int i = 0; i < card.Length; i++)
+        string pattern = @"\b\d+\b";
+        MatchCollection matches = Regex.Matches(input, pattern);
+
+        foreach (Match match in matches)
         {
-            if (isNum(card[i]))
+            if (int.TryParse(match.Value, out int number))
             {
-                NumberList.Add(getASCIIValue(getDigit(card, i++)) * 10 + getASCIIValue(getDigit(card, i)));
-                i++;
+                NumberList.Add(number);
             }
         }
         return NumberList;
