@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 class Operations
 {
-        public List<int> GenerateNumberList(string input)
+    public List<int> GenerateNumberList(string input)
     {
         List<int> NumberList = new List<int>();
         string pattern = @"\b\d+\b";
