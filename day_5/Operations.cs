@@ -17,4 +17,20 @@ class Operations
         }
         return NumberList;
     }
+
+    public Map GenerateMap(string input)
+    {
+        Map mappedPosition;
+        mappedPosition.destination_range = 0;
+        mappedPosition.source_range = 0;
+        mappedPosition.range_length = 0;
+
+        List<int> mapNumbers = GenerateNumberList(input);
+
+        mappedPosition.destination_range = mapNumbers[0];
+        mappedPosition.source_range = mapNumbers[1];
+        mappedPosition.range_length = mapNumbers[2];
+
+        return mappedPosition;
+    }
 }
