@@ -21,9 +21,6 @@ class Operations
     public Map GenerateMap(string input)
     {
         Map mappedPosition;
-        mappedPosition.destination_range = 0;
-        mappedPosition.source_range = 0;
-        mappedPosition.range_length = 0;
 
         List<int> mapNumbers = GenerateNumberList(input);
 
