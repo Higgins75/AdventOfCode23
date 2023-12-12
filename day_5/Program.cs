@@ -12,7 +12,7 @@ class day_5_program
         string[] testString = f.readFile("day_5_test.txt");
 
         // string seeds = "seeds:";
-        var seeds = new List<int>();
+        var seeds = new List<long>();
         var soilMap = new List<Map>();
         var fertMap = new List<Map>();
         var waterMap = new List<Map>();
@@ -84,22 +84,18 @@ class day_5_program
             }
             if (testString[i].Contains("humidity-to-location map"))
             {
-                i++;
-                while (testString[i] != string.Empty && i < testString.Length)
+                while (testString[i] != string.Empty && i < testString.Length - 1)
                 {
+                    i++;
                     locMap.Add(o.GenerateMap(testString[i]));
-                    if (i < testString.Length)
-                    {
-                        i++;
-                    }
                 }
             }
             
         }
 
-        foreach (var soil in locMap)
+        foreach (var num in locMap)
         {
-            Console.WriteLine(soil.destination_range + " " + soil.source_range + " " + soil.range_length);
+            Console.WriteLine(num.destination_range + " " + num.source_range + " " + num.range_length);
         }
 
     }

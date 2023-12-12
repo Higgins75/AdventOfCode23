@@ -2,15 +2,15 @@ using System.Text.RegularExpressions;
 
 class Operations
 {
-    public List<int> GenerateNumberList(string input)
+    public List<long> GenerateNumberList(string input)
     {
-        List<int> NumberList = new List<int>();
+        List<long> NumberList = new List<long>();
         string pattern = @"\b\d+\b";
         MatchCollection matches = Regex.Matches(input, pattern);
 
         foreach (Match match in matches)
         {
-            if (int.TryParse(match.Value, out int number))
+            if (long.TryParse(match.Value, out long number))
             {
                 NumberList.Add(number);
             }
@@ -22,7 +22,7 @@ class Operations
     {
         Map mappedPosition;
 
-        List<int> mapNumbers = GenerateNumberList(input);
+        List<long> mapNumbers = GenerateNumberList(input);
 
         mappedPosition.destination_range = mapNumbers[0];
         mappedPosition.source_range = mapNumbers[1];

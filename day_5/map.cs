@@ -1,7 +1,7 @@
 public struct Map
 {
-    public int destination_range;
-    public int source_range;
+    public long destination_range;
+    public long source_range;
 
-    public int range_length;
+    public long range_length;
 }
