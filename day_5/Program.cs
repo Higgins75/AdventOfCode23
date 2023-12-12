@@ -13,13 +13,59 @@ class day_5_program
 
         // string seeds = "seeds:";
         var seeds = new List<int>();
+        var soilMap = new List<Map>();
+        var fertMap = new List<Map>();
+        var waterMap = new List<Map>();
+        var lightMap = new List<Map>();
 
-        foreach (string item in testString)
+        for (int i = 0; i < testString.Length; i++)
         {
-            if (item.Contains("seeds:"))
+            if (testString[i].Contains("seeds:"))
             {
-                seeds.AddRange(o.GenerateNumberList(item));
+                seeds.AddRange(o.GenerateNumberList(testString[i]));
+            }
+            if (testString[i].Contains("seed-to-soil map"))
+            {
+                i++;
+                while (testString[i] != string.Empty)
+                {
+                    soilMap.Add(o.GenerateMap(testString[i]));
+                    i++;
+                }
+            }
+            if (testString[i].Contains("soil-to-fertilizer map"))
+            {
+                i++;
+                while (testString[i] != string.Empty)
+                {
+                    fertMap.Add(o.GenerateMap(testString[i]));
+                    i++;
+                }
+            }
+            if (testString[i].Contains("fertilizer-to-water map"))
+            {
+                i++;
+                while (testString[i] != string.Empty)
+                {
+                    waterMap.Add(o.GenerateMap(testString[i]));
+                    i++;
+                }
+            }
+            if (testString[i].Contains("water-to-light map"))
+            {
+                i++;
+                while (testString[i] != string.Empty)
+                {
+                    lightMap.Add(o.GenerateMap(testString[i]));
+                    i++;
+                }
             }
         }
+
+        foreach (var soil in fertMap)
+        {
+            Console.WriteLine(soil.destination_range + " " + soil.source_range + " " + soil.range_length);
+        }
+
     }
 }
