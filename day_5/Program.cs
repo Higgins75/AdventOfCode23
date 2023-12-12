@@ -17,6 +17,10 @@ class day_5_program
         var fertMap = new List<Map>();
         var waterMap = new List<Map>();
         var lightMap = new List<Map>();
+        var tempMap = new List<Map>();
+        var humidMap = new List<Map>();
+        var locMap = new List<Map>();
+
 
         for (int i = 0; i < testString.Length; i++)
         {
@@ -60,9 +64,40 @@ class day_5_program
                     i++;
                 }
             }
+            if (testString[i].Contains("light-to-temperature map"))
+            {
+                i++;
+                while (testString[i] != string.Empty)
+                {
+                    tempMap.Add(o.GenerateMap(testString[i]));
+                    i++;
+                }
+            }
+            if (testString[i].Contains("temperature-to-humidity"))
+            {
+                i++;
+                while (testString[i] != string.Empty)
+                {
+                    humidMap.Add(o.GenerateMap(testString[i]));
+                    i++;
+                }
+            }
+            if (testString[i].Contains("humidity-to-location map"))
+            {
+                i++;
+                while (testString[i] != string.Empty && i < testString.Length)
+                {
+                    locMap.Add(o.GenerateMap(testString[i]));
+                    if (i < testString.Length)
+                    {
+                        i++;
+                    }
+                }
+            }
+            
         }
 
-        foreach (var soil in fertMap)
+        foreach (var soil in locMap)
         {
             Console.WriteLine(soil.destination_range + " " + soil.source_range + " " + soil.range_length);
         }
