@@ -111,12 +111,12 @@ class day_5_program
         {
             // Console.WriteLine(seed);
             long tempPosition = o.LowestPosition(overallList, seed);
-            if (lowestPositionSet == false && tempPosition > 0)
+            if (lowestPositionSet == false)
             {
                 lowestPosition = tempPosition;
                 lowestPositionSet = true;
             }
-            else if (tempPosition < lowestPosition && lowestPositionSet == true && tempPosition < 0)
+            else if (tempPosition < lowestPosition)
             {
                 lowestPosition = tempPosition;
             }

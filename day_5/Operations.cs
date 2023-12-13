@@ -48,8 +48,8 @@ class Operations
                 long source_range_lower = map.source_range;
                 long source_range_upper = source_range_lower + map.range_length;
 
-                Console.WriteLine(test);
-                Console.WriteLine(source_range_lower + " " + source_range_upper);
+                // Console.WriteLine(test);
+                // Console.WriteLine(source_range_lower + " " + source_range_upper);
 
 
                 if (test >= source_range_lower && test <= source_range_upper)
@@ -62,7 +62,7 @@ class Operations
             {
                 test = localPositions.AsQueryable().Min();
             }
-            Console.WriteLine(test);
+            // Console.WriteLine(test);
         }
 
         return test;
