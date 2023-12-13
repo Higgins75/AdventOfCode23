@@ -21,6 +21,7 @@ class day_5_program
         var humidMap = new List<Map>();
         var locMap = new List<Map>();
 
+
         long lowestPosition = 99999;
         bool lowestPositionSet = false;
 
@@ -95,6 +96,16 @@ class day_5_program
             }
             
         }
+
+        // List<List<Map>> overallList = new List<List<Map>>();
+        // overallList.Add(soilMap);
+        // overallList.Add(fertMap);
+        // overallList.Add(waterMap);
+        // overallList.Add(waterMap);
+        // overallList.Add(lightMap);
+        // overallList.Add(tempMap);
+        // overallList.Add(humidMap);
+        // overallList.Add(locMap);
 
         foreach (var seed in seeds)
         {
