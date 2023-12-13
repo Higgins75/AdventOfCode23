@@ -97,19 +97,20 @@ class day_5_program
             
         }
 
-        // List<List<Map>> overallList = new List<List<Map>>();
-        // overallList.Add(soilMap);
-        // overallList.Add(fertMap);
-        // overallList.Add(waterMap);
-        // overallList.Add(waterMap);
-        // overallList.Add(lightMap);
-        // overallList.Add(tempMap);
-        // overallList.Add(humidMap);
-        // overallList.Add(locMap);
+        List<List<Map>> overallList = new List<List<Map>>();
+        overallList.Add(soilMap);
+        overallList.Add(fertMap);
+        overallList.Add(waterMap);
+        overallList.Add(waterMap);
+        overallList.Add(lightMap);
+        overallList.Add(tempMap);
+        overallList.Add(humidMap);
+        overallList.Add(locMap);
 
         foreach (var seed in seeds)
         {
-            long tempPosition = o.LowestPosition(soilMap, seed);
+            // Console.WriteLine(seed);
+            long tempPosition = o.LowestPosition(overallList, seed);
             if (lowestPositionSet == false && tempPosition > 0)
             {
                 lowestPosition = tempPosition;

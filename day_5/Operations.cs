@@ -31,37 +31,41 @@ class Operations
         return mappedPosition;
     }
 
-    public long LowestPosition(List<Map> inputMap, long seed)
+    public long LowestPosition(List<List<Map>> inputMap, long seed)
     {
-        long position = 9999999;
-        long tempPosition;
+        long test = seed;
+        var localPositions = new List<long>();
 
         
-
-        foreach (var map in inputMap)
+        foreach (var list in inputMap)
         {
-            long Destination_range_lower = map.destination_range;
-            long Destination_range_upper = Destination_range_lower + map.range_length;
-
-            long source_range_lower = map.source_range;
-            long source_range_upper = source_range_lower + map.range_length;
-
-            Console.WriteLine(seed);
-            Console.WriteLine(source_range_lower + " " + source_range_upper);
-
-
-            if (seed >= source_range_lower && seed <= source_range_upper)
+            localPositions.Clear();
+            foreach (var map in list)
             {
-                //do logic, generate positon
-                tempPosition = seed - source_range_lower + Destination_range_lower;
-                if (tempPosition < position && tempPosition > 0)
+                long Destination_range_lower = map.destination_range;
+                long Destination_range_upper = Destination_range_lower + map.range_length;
+
+                long source_range_lower = map.source_range;
+                long source_range_upper = source_range_lower + map.range_length;
+
+                Console.WriteLine(test);
+                Console.WriteLine(source_range_lower + " " + source_range_upper);
+
+
+                if (test >= source_range_lower && test <= source_range_upper)
                 {
-                    position = tempPosition;
+                    //do logic, generate positon
+                    localPositions.Add(test - source_range_lower + Destination_range_lower);
                 }
             }
+            if (localPositions.Count !=0)
+            {
+                test = localPositions.AsQueryable().Min();
+            }
+            Console.WriteLine(test);
         }
 
-        return position;
+        return test;
     }
    
 }
