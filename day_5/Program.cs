@@ -21,6 +21,9 @@ class day_5_program
         var humidMap = new List<Map>();
         var locMap = new List<Map>();
 
+        long lowestPosition = 99999;
+        bool lowestPositionSet = false;
+
 
         for (int i = 0; i < testString.Length; i++)
         {
@@ -93,10 +96,21 @@ class day_5_program
             
         }
 
-        foreach (var num in locMap)
+        foreach (var seed in seeds)
         {
-            Console.WriteLine(num.destination_range + " " + num.source_range + " " + num.range_length);
+            long tempPosition = o.LowestPosition(soilMap, seed);
+            if (lowestPositionSet == false && tempPosition > 0)
+            {
+                lowestPosition = tempPosition;
+                lowestPositionSet = true;
+            }
+            else if (tempPosition < lowestPosition && lowestPositionSet == true && tempPosition < 0)
+            {
+                lowestPosition = tempPosition;
+            }
         }
+
+        Console.WriteLine(lowestPosition);
 
     }
 }
