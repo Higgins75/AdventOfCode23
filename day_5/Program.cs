@@ -9,7 +9,7 @@ class day_5_program
         fileReader f = new fileReader();
         Operations o = new Operations();
 
-        string[] testString = f.readFile("day_5_test.txt");
+        string[] testString = f.readFile("day_5.txt");
 
         // string seeds = "seeds:";
         var seeds = new List<long>();
@@ -101,7 +101,6 @@ class day_5_program
         overallList.Add(soilMap);
         overallList.Add(fertMap);
         overallList.Add(waterMap);
-        overallList.Add(waterMap);
         overallList.Add(lightMap);
         overallList.Add(tempMap);
         overallList.Add(humidMap);
@@ -111,6 +110,7 @@ class day_5_program
         {
             // Console.WriteLine(seed);
             long tempPosition = o.LowestPosition(overallList, seed);
+            Console.WriteLine(o.LowestPosition(overallList, seed));
             if (lowestPositionSet == false)
             {
                 lowestPosition = tempPosition;
