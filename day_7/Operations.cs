@@ -21,7 +21,7 @@ class Operations
 
         char[] CardValueArr = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
         
-        var mostFrequent = charCounts.OrderByDescending(pair => pair.Value)
+        List<(char, int)> mostFrequent = charCounts.OrderByDescending(pair => pair.Value)
                                          .ThenByDescending(pair => Array.IndexOf(CardValueArr, pair.Key))
                                          .Select(pair => (pair.Key, pair.Value))
                                          .Take(numberOfResults)
