@@ -22,12 +22,19 @@ class day_7_program
 
             newHand.handString = (sub[0]);
             newHand.betValue = int.Parse(sub[1]);
-            newHand.handStrength = o.getBaseHandValue(sub[0]);
-
+            newHand.handStrength = o.getBaseHandValue(sub[0]);           
+            
             handsList.Add(newHand);
         }
         
-        handsList = handsList.OrderBy(item => item.handStrength).ToList();
+        handsList = handsList.OrderBy(item => item.handStrength)
+                                                                .ThenBy(item => o.getHighestCard(item.handString, 0))
+                                                                .ThenBy(item => o.getHighestCard(item.handString, 1))
+                                                                .ThenBy(item => o.getHighestCard(item.handString, 2))
+                                                                .ThenBy(item => o.getHighestCard(item.handString, 3))  
+                                                                .ThenBy(item => o.getHighestCard(item.handString, 4))                                                                                                                                
+                                                                .ToList();
+                
 
         foreach (var value in handsList)
         {
@@ -36,7 +43,7 @@ class day_7_program
 
         for (int i = 0; i < handsList.Count; i++)
         {
-            totalBetValue += handsList[i].betValue * i;
+            totalBetValue += handsList[i].betValue * (i + 1);
         }
 
         Console.WriteLine(totalBetValue);
