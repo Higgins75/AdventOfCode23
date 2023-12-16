@@ -1,9 +1,9 @@
 class Operations
 {
-    static List<(char Character, int Count)> GetMostFrequentCharacters(string input, int numberOfResults)
+    public List<(char Character, int Count)> GetMostFrequentCharacters(string input)
     {
         Dictionary<char, int> charCounts = new Dictionary<char, int>();
-
+        int numberOfResults = 2;
         foreach (char c in input)
         {
             if (charCounts.ContainsKey(c))
