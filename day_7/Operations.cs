@@ -1,7 +1,9 @@
 class Operations
 {
-    public Dictionary<char, int> GetMostFrequentCharacters(string input)
+    //need to replace Dictionary with some kind of Tuple for sorting
+    public List<(char, int)> GetMostFrequentCharacters(string input)
     {
+        
         Dictionary<char, int> charCounts = new Dictionary<char, int>();
 
         int numberOfResults = 2;
@@ -21,17 +23,19 @@ class Operations
         
         var mostFrequent = charCounts.OrderByDescending(pair => pair.Value)
                                          .ThenByDescending(pair => Array.IndexOf(CardValueArr, pair.Key))
-                                         .ToDictionary(pair => pair.Key, pair => pair.Value);
+                                         .Select(pair => (pair.Key, pair.Value))
+                                         .Take(numberOfResults)
+                                         .ToList();
 
         return mostFrequent;
     }
 
     public int getBaseHandValue(string input)
     {
-        Dictionary<char, int> mostFrequent = GetMostFrequentCharacters(input);
+        List<(char, int)> mostFrequent = GetMostFrequentCharacters(input);
 
         var firstPosition = mostFrequent.FirstOrDefault();
-        int value = firstPosition.Value;
+        int value = firstPosition.Item2;
 
         if (value >= 3)
         {
@@ -40,7 +44,7 @@ class Operations
 
         if (value == 2 && mostFrequent.Count >= 2)
         {
-            if (mostFrequent.ElementAt(1).Value == 2)
+            if (mostFrequent.ElementAt(1).Item2 == 2)
             {
                 value += 1;
             }
