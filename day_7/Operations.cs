@@ -1,6 +1,6 @@
 class Operations
 {
-    public List<(char Character, int Count)> GetMostFrequentCharacters(string input)
+    public (char Character, int Count) GetMostFrequentCharacters(string input)
     {
         Dictionary<char, int> charCounts = new Dictionary<char, int>();
         int numberOfResults = 2;
@@ -16,8 +16,8 @@ class Operations
             }
         }
 
-        var mostFrequent = charCounts.OrderByDescending(kv => kv.Value).Take(numberOfResults).ToList();
+        var mostFrequent = charCounts.OrderByDescending(kv => kv.Value).FirstOrDefault();
 
-        return mostFrequent.Select(kv => (kv.Key, kv.Value)).ToList();
+        return (mostFrequent.Key, mostFrequent.Value);
     }
 }
