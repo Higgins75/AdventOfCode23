@@ -10,6 +10,7 @@ class day_7_program
         Operations o = new Operations();
 
         string[] inputFile = f.readFile("day_7.txt");
+        long totalBetValue = 0;
 
         List<Hand> handsList = new List<Hand>();
 
@@ -21,18 +22,23 @@ class day_7_program
 
             newHand.handString = (sub[0]);
             newHand.betValue = int.Parse(sub[1]);
-            newHand.handStrength = o.GetMostFrequentCharacters(sub[0]);
+            newHand.handStrength = o.getBaseHandValue(sub[0]);
 
             handsList.Add(newHand);
         }
-
-        handsList.OrderByDescending(kv => kv.handStrength);
+        
+        handsList = handsList.OrderBy(item => item.handStrength).ToList();
 
         foreach (var value in handsList)
         {
             Console.WriteLine(value.handString + " " + value.betValue + " " + value.handStrength);
         }
 
+        for (int i = 0; i < handsList.Count; i++)
+        {
+            totalBetValue += handsList[i].betValue * i;
+        }
 
+        Console.WriteLine(totalBetValue);
     }
 }
