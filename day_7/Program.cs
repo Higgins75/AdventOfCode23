@@ -36,10 +36,10 @@ class day_7_program
                                                                 .ToList();
                 
 
-        // foreach (var value in handsList)
-        // {
-        //     Console.WriteLine(value.handString + " " + value.betValue + " " + value.handStrength);
-        // }
+        foreach (var value in handsList)
+        {
+            Console.WriteLine(value.handString + " " + value.betValue + " " + value.handStrength + " ");
+        }
 
         for (int i = 0; i < handsList.Count; i++)
         {

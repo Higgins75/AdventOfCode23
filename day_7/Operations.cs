@@ -50,6 +50,19 @@ class Operations
             }
         }
 
+        if (value >= 5)
+        {
+            value += 1;
+        }
+
+        if (value == 4 && mostFrequent.Count >= 2)
+        {
+            if (mostFrequent.ElementAt(1).Item2 == 2)
+            {
+                value += 1;
+            }
+        }
+
 
         return value;
     }
