@@ -11,6 +11,7 @@
         string finalInputToLocate = "ZZZ";
         bool inputLocated = false;
         int count = 0;
+        Map mapToTest = new Map();
 
         List<Map> mapList = new List<Map>();
 
@@ -19,9 +20,17 @@
             mapList.Add(o.getMap(inputFile[i]));
         } 
 
-        Map mapToTest = mapList[0];
+        foreach (var map in mapList)
+        {
+            if (map.indexOfString == "AAA")
+            {
+                mapToTest = map;
+            }
+        }
 
-        while (inputLocated == false)
+        Console.WriteLine(mapToTest.indexOfString + " " + mapToTest.lString + " " + mapToTest.rString);
+
+        while (!inputLocated)
         {
             foreach (char c in instructions)
             {
@@ -31,8 +40,8 @@
                     if (mapToTest.rString == finalInputToLocate)
                     {
                         inputLocated = true;
-                        Console.WriteLine($"found ZZZ on R of {mapToTest.indexOfString}");
                         count++;
+                        Console.WriteLine($"found ZZZ on R of {mapToTest.indexOfString}");
                         break;
                     }
                     foreach (var map in mapList)
@@ -51,8 +60,8 @@
                     if (mapToTest.lString == finalInputToLocate)
                     {
                         inputLocated = true;
-                        Console.WriteLine($"found ZZZ on L of {mapToTest.indexOfString}");
                         count++;
+                        Console.WriteLine($"found ZZZ on L of {mapToTest.indexOfString}");
                         break;
                     }
                     foreach (var map in mapList)
