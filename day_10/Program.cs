@@ -28,10 +28,28 @@ class day_10_program
 
         
 
-        startingLocation.direction++;
-        if (positionIsViable(startingLocation, input));
-
         //intial move, check each direction, move in the first one possible.
+        startingLocation.direction++;
+        if (positionIsViable(startingLocation, input))
+        {
+            //move
+        }else startingLocation.direction++;
+
+        if (positionIsViable(startingLocation, input))
+        {
+            //move
+        }else startingLocation.direction++;
+
+        if (positionIsViable(startingLocation, input))
+        {
+            //move
+        }else startingLocation.direction++;
+
+        if (positionIsViable(startingLocation, input))
+        {
+            //move
+        }               
+
 
         //every move thereafter. While !pathComplete check what character is in position and then move to next.
     }
@@ -95,8 +113,83 @@ class day_10_program
         
         if (positionIsViable(startingLocation, input))
         {
-        
+            switch (startingLocation.direction)
+            {
+                case 1:
+                newPosition = (startingLocation.y - 1, startingLocation.x, 0);
+                switch (input[newPosition.y][newPosition.x])
+                {
+                    case '|':
+                    newPosition.direction = 1;
+                    break;
+
+                    case 'F':
+                    newPosition.direction = 2;
+                    break;
+
+                    case '7':
+                    newPosition.direction = 4;
+                    break;
+                }
+                break;
+                
+                case 2:
+                newPosition = (startingLocation.y, startingLocation.x + 1, 0);
+                switch (input[newPosition.y][newPosition.x])
+                {
+                    case '-':
+                    newPosition.direction = 2;
+                    break;
+
+                    case 'J':
+                    newPosition.direction = 1;
+                    break;
+
+                    case '7':
+                    newPosition.direction = 3;
+                    break;
+                }
+                break;
+
+                case 3:
+                newPosition = (startingLocation.y + 1, startingLocation.x, 0);
+                switch (input[newPosition.y][newPosition.x])
+                {
+                    case '|':
+                    newPosition.direction = 3;
+                    break;
+
+                    case 'J':
+                    newPosition.direction = 4;
+                    break;
+
+                    case 'L':
+                    newPosition.direction = 2;
+                    break;
+                }
+                break;
+
+                case 4:
+                newPosition = (startingLocation.y, startingLocation.x - 1, 0);
+                switch (input[newPosition.y][newPosition.x])
+                {
+                    case '-':
+                    newPosition.direction = 4;
+                    break;
+
+                    case 'F':
+                    newPosition.direction = 3;
+                    break;
+
+                    case 'L':
+                    newPosition.direction = 1;
+                    break;
+                }
+                break;
+            }
         }
+
+        //locate the character at the new position, and adjust direction accordingly.
         
 
         return newPosition;
