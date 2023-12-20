@@ -14,7 +14,7 @@ class day_10_program
         int stepsTaken = 0;
         bool pathComplete = false;
 
-
+        //fetches starting position
         int Startcount = 0;
         foreach (string line in input)
         {
@@ -27,7 +27,6 @@ class day_10_program
         }
 
         
-
         //intial move, check each direction, move in the first one possible.
         startingLocation.direction++;
 
@@ -41,7 +40,7 @@ class day_10_program
             else startingLocation.direction++;
         }
            
-
+        //make further moves until returns to start, stepsTaken++ tracks steps needed
         while(!pathComplete)
         {
             // Console.WriteLine($"Moving in {startingLocation.direction}");
@@ -53,18 +52,11 @@ class day_10_program
             }
         }
 
+        //return furthest point
         Console.WriteLine(stepsTaken/2);
     }
 
-    static bool isComplete(Tuple<int, int> location, string[] input)
-    {
-        if (input[location.Item1][location.Item2] == 'S')
-        {
-            return true;
-        }
-        else return false;
-    }
-
+    //function to check if position is viable to move to
     static bool positionIsViable((int y, int x, int direction) startingLocation, string[] input)
     {
 
@@ -107,6 +99,7 @@ class day_10_program
         return false;
     }
 
+    //function to actually move
     static (int y, int x, int direction) moveToNextPosition((int y, int x, int direction) startingLocation, string[] input)
     {
         var newPosition = startingLocation;
@@ -189,12 +182,11 @@ class day_10_program
             }
         }
 
-        //locate the character at the new position, and adjust direction accordingly.
-        
-
         return newPosition;
     }
 
+
+    //simple fucntion to check array for a character
     static bool ArrayContains(char[] array, char target)
     {
         return Array.IndexOf(array, target) != -1;
