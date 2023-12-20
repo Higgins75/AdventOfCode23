@@ -1,6 +1,6 @@
 class fileReader
 {
-    public string[] readFile(string fileName)
+    public List<string> readFile(string fileName)
     {
         //creates a List to input file lines into
         List<string> inputStrings = new List<string>();
@@ -26,6 +26,6 @@ class fileReader
             }
         
         //returns the list, as an array of strings for easier functions later
-        return inputStrings.ToArray();
+        return inputStrings;
     }
 }
