@@ -30,28 +30,30 @@ class day_10_program
 
         //intial move, check each direction, move in the first one possible.
         startingLocation.direction++;
-        if (positionIsViable(startingLocation, input))
+
+        for (int i = startingLocation.direction; i <= 4; i++)
         {
-            //move
-        }else startingLocation.direction++;
+            if (positionIsViable(startingLocation, input))
+            {
+                //move
+                break;
+            }
+            else startingLocation.direction++;
+        }
+           
 
-        if (positionIsViable(startingLocation, input))
+        while(!pathComplete)
         {
-            //move
-        }else startingLocation.direction++;
+            // Console.WriteLine($"Moving in {startingLocation.direction}");
+            startingLocation = moveToNextPosition(startingLocation, input);
+            stepsTaken++;
+            if (input[startingLocation.y][startingLocation.x] == 'S')
+            {
+                pathComplete = true;
+            }
+        }
 
-        if (positionIsViable(startingLocation, input))
-        {
-            //move
-        }else startingLocation.direction++;
-
-        if (positionIsViable(startingLocation, input))
-        {
-            //move
-        }               
-
-
-        //every move thereafter. While !pathComplete check what character is in position and then move to next.
+        Console.WriteLine(stepsTaken/2);
     }
 
     static bool isComplete(Tuple<int, int> location, string[] input)
@@ -70,8 +72,6 @@ class day_10_program
         char[] East = {'-', 'J', '7', 'S'}; //direction 2
         char[] South = {'|', 'J', 'L', 'S'}; //direction 3
         char[] West = {'-', 'F', 'L', 'S'}; //direction 4
-
-        Console.WriteLine(startingLocation.x);
 
         switch (startingLocation.direction)
         {
