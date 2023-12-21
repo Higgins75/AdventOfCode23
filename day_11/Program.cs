@@ -29,6 +29,28 @@ class day_11_program
             }
         }
 
+        List<int> PositionsToEdit = new List<int>();
+
+        for (int i = 0; i < input[0].Length; i++)
+        {
+            if (input[0][i] == '.')
+            {
+                bool passesCheck = true;
+                foreach (var item in input)
+                {
+                    if (item[i] != '.')
+                    {
+                        passesCheck = false;
+                        break;
+                    }
+                }
+                if (passesCheck == true)
+                {
+                    PositionsToEdit.Add(i);
+                }
+            }
+        }
+
         return input;
     }   
 }
