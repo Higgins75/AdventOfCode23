@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 class day_11_program
 {
@@ -16,6 +18,14 @@ class day_11_program
             Console.WriteLine(line);
         }
 
+        List<(int y, int x)> galaxyLocations = findGalaxyLocations(input);
+
+
+        foreach (var galaxy in galaxyLocations)
+        {
+            Console.WriteLine($"y {galaxy.y}, x {galaxy.x}");
+        }
+
     }
 
     static List<string> expandUniverse (List<string> input)
@@ -25,6 +35,30 @@ class day_11_program
 
         return input;
     }   
+
+    static List<(int y, int x)> findGalaxyLocations (List<string> input)
+    {
+        List<(int y, int x)> galaxyLocations = new List<(int y, int x)>();
+        int y = 0;
+        int x = 0;
+
+        foreach (string line in input)
+        {
+            x = 0;
+            foreach (char character in line)
+            {
+                if (character == '#')
+                {
+                    galaxyLocations.Add((y, x));
+                }
+                x++;
+            }
+            y++;
+        }
+
+
+        return galaxyLocations;
+    }
 
     static List<string> expandUniverseHorizontal (List<string> input)
     {
