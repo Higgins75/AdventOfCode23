@@ -32,10 +32,11 @@ class day_11_program
                 int item2y = galaxyLocations[j].y;
                 int item2x = galaxyLocations[j].x;
 
+
                 //add differences between y and x
                 int differencey = Math.Abs(item1y - item2y);
                 int differencex = Math.Abs(item1x - item2x);
-
+                Console.WriteLine($"Galaxy{i + 1} and Galaxy{j + 1} difference is {differencex + differencey}");
                 distances.Add(differencex + differencey);
             }
         }
