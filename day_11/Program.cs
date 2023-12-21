@@ -20,6 +20,14 @@ class day_11_program
 
     static List<string> expandUniverse (List<string> input)
     {
+        input = expandUniverseHorizontal(input);
+        input = expandUniverseVertical(input);
+
+        return input;
+    }   
+
+    static List<string> expandUniverseHorizontal (List<string> input)
+    {
         for (int i = 0; i < input.Count; i++)
         {
             if (!input[i].Contains('#'))
@@ -29,6 +37,11 @@ class day_11_program
             }
         }
 
+        return input;
+    }
+
+    static List<string> expandUniverseVertical (List<string> input)
+    {
         List<int> PositionsToEdit = new List<int>();
 
         for (int i = 0; i < input[0].Length; i++)
@@ -55,19 +68,13 @@ class day_11_program
         {
             for (int i = 0; i < input.Count; i++)
         {
-            // Check if the position is valid
             if (position >= 0 && position <= input[i].Length)
             {
-                // Insert the character at the specified position for each string
                 input[i] = input[i].Insert(position, ".".ToString());
-            }
-            else
-            {
-                Console.WriteLine($"Invalid position to insert in string at index {i}.");
             }
         }
         }
 
         return input;
-    }   
+    }
 }
