@@ -13,11 +13,6 @@ class day_11_program
         List<string> input = f.readFile("day_11.txt");
 
         input = expandUniverse(input);
-        
-        // foreach (string line in input)
-        // {
-        //     Console.WriteLine(line);
-        // }
 
         List<(int y, int x)> galaxyLocations = findGalaxyLocations(input);
 
@@ -32,12 +27,10 @@ class day_11_program
                 int item2y = galaxyLocations[j].y;
                 int item2x = galaxyLocations[j].x;
 
-
-                //add differences between y and x
                 int differencey = Math.Abs(item1y - item2y);
                 int differencex = Math.Abs(item1x - item2x);
-                Console.WriteLine($"Galaxy{i + 1} and Galaxy{j + 1} difference is {differencex + differencey}");
-                distances.Add(differencex + differencey);
+
+                distances.Add(differencey + differencex);
             }
         }
 
@@ -120,16 +113,17 @@ class day_11_program
                 }
             }
         }
-
+        int count = 0;
         foreach (int position in PositionsToEdit)
-        {
+        {   
             for (int i = 0; i < input.Count; i++)
-        {
-            if (position >= 0 && position <= input[i].Length)
             {
-                input[i] = input[i].Insert(position, ".".ToString());
+                if (position >= 0 && position <= input[i].Length)
+                {
+                    input[i] = input[i].Insert(position + count, ".".ToString());
+                }
             }
-        }
+            count++;
         }
 
         return input;
