@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
@@ -13,18 +14,39 @@ class day_11_program
 
         input = expandUniverse(input);
         
-        foreach (string line in input)
-        {
-            Console.WriteLine(line);
-        }
+        // foreach (string line in input)
+        // {
+        //     Console.WriteLine(line);
+        // }
 
         List<(int y, int x)> galaxyLocations = findGalaxyLocations(input);
 
+        List<int> distances = new List<int>();
 
-        foreach (var galaxy in galaxyLocations)
+        for (int i = 0; i < galaxyLocations.Count - 1; i++)
         {
-            Console.WriteLine($"y {galaxy.y}, x {galaxy.x}");
+            for (int j = i + 1; j < galaxyLocations.Count; j++)
+            {
+                int item1y = galaxyLocations[i].y;
+                int item1x = galaxyLocations[i].x;
+                int item2y = galaxyLocations[j].y;
+                int item2x = galaxyLocations[j].x;
+
+                //add differences between y and x
+                int differencey = Math.Abs(item1y - item2y);
+                int differencex = Math.Abs(item1x - item2x);
+
+                distances.Add(differencex + differencey);
+            }
         }
+
+        int sum = 0;
+        foreach (var distance in distances)
+        {
+            sum += distance;
+        }
+
+        Console.WriteLine(sum);
 
     }
 
