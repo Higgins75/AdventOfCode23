@@ -51,6 +51,23 @@ class day_11_program
             }
         }
 
+        foreach (int position in PositionsToEdit)
+        {
+            for (int i = 0; i < input.Count; i++)
+        {
+            // Check if the position is valid
+            if (position >= 0 && position <= input[i].Length)
+            {
+                // Insert the character at the specified position for each string
+                input[i] = input[i].Insert(position, ".".ToString());
+            }
+            else
+            {
+                Console.WriteLine($"Invalid position to insert in string at index {i}.");
+            }
+        }
+        }
+
         return input;
     }   
 }
