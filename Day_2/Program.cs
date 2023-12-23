@@ -4,7 +4,6 @@ class Program
 {
     static void Main()
     {
-        stringCleaner clean = new stringCleaner();
         Operations o = new Operations();
         fileReader f = new fileReader();
 
@@ -19,7 +18,7 @@ class Program
         int greenTotal = 0;
         int blueTotal = 0;
 
-        string[] cleanedString = clean.cleanString(ArrayList[i]);
+        string[] cleanedString = cleanString(ArrayList[i]);
         
         foreach (var substring in cleanedString)
         {
@@ -49,4 +48,14 @@ class Program
     }
     Console.WriteLine(GameSum);
 }
+    static string[] cleanString(string toClean)
+    {
+        string[] cleanedString = toClean.Split(':');
+        string[] stringArray = cleanedString[1].Split(',', ';');
+        for (int i = 0; i < stringArray.Length; i++)
+        {
+            stringArray[i] = stringArray[i].Trim();
+        }
+        return stringArray;
+    }
 }
