@@ -13,40 +13,39 @@ class Program
 
         for (int i = 0; i < ArrayList.Length; i++)
         {
-               
-        int redTotal = 0;
-        int greenTotal = 0;
-        int blueTotal = 0;
+            int redTotal = 0;
+            int greenTotal = 0;
+            int blueTotal = 0;
 
-        string[] cleanedString = cleanString(ArrayList[i]);
-        
-        foreach (var substring in cleanedString)
-        {
-            if (o.redCubes(substring) > redTotal)
+            string[] cleanedString = cleanString(ArrayList[i]);
+            
+            foreach (var substring in cleanedString)
             {
+                if (o.redCubes(substring) > redTotal)
+                {
 
-                redTotal = o.redCubes(substring);
+                    redTotal = o.redCubes(substring);
 
+                }
+
+                if (o.greenCubes(substring) > greenTotal)
+                {
+
+                    greenTotal = o.greenCubes(substring);
+
+                }
+
+                if (o.blueCubes(substring) > blueTotal)
+                {
+
+                    blueTotal = o.blueCubes(substring);
+                }          
             }
-
-            if (o.greenCubes(substring) > greenTotal)
-            {
-
-                greenTotal = o.greenCubes(substring);
-
-            }
-
-            if (o.blueCubes(substring) > blueTotal)
-            {
-
-                blueTotal = o.blueCubes(substring);
-            }          
+            
+            int sum = blueTotal * redTotal * greenTotal;
+            GameSum += sum;
         }
-        
-        int sum = blueTotal * redTotal * greenTotal;
-        GameSum += sum;
-    }
-    Console.WriteLine(GameSum);
+        Console.WriteLine(GameSum);
 }
     static string[] cleanString(string toClean)
     {
