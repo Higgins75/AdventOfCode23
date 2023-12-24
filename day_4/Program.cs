@@ -13,30 +13,27 @@ class day_4_program
 
         foreach (string card in cardsCollection)
         {
-        string[] splitCard = StringCleaner(card); 
-        int cardWorth = 0;
+            string[] splitCard = StringCleaner(card); 
+            int cardWorth = 0;
 
-        var winningNums = new List<int>();
-        winningNums.AddRange(GenerateNumberList(splitCard[0]));
-        
-        var personalNums = new List<int>();
-        personalNums.AddRange(GenerateNumberList(splitCard[1]));
+            var winningNums = new List<int>();
+            winningNums.AddRange(GenerateNumberList(splitCard[0]));
+            
+            var personalNums = new List<int>();
+            personalNums.AddRange(GenerateNumberList(splitCard[1]));
 
-
-
-        foreach (var number in winningNums)
-        {
-            if (personalNums.Contains(number))
-            {
-                if (cardWorth != 0)
+            foreach (var number in winningNums)
                 {
-                    cardWorth = cardWorth * 2;
+                if (personalNums.Contains(number))
+                    {
+                    if (cardWorth != 0)
+                        {
+                        cardWorth = cardWorth * 2;
+                        }
+                    else cardWorth += 1;
+                    }
                 }
-                else cardWorth += 1;
-            }
-        }
 
-        // Console.WriteLine(pointsWorth);
         totalPoints = totalPoints + cardWorth;
         }
         Console.WriteLine(totalPoints);
