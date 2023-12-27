@@ -10,15 +10,30 @@ class day_13_program
         string[] inputNorm = f.readFile("day_13.txt");
         string[] inputFlip = GetStringsFromColumns(inputNorm);
 
-        for (int i = 0; i < inputNorm.Length; i++)
+
+        //generates subArrays. This is an example.
+        string[] newArray = GenerateSubArray(inputNorm, 1, 4);
+        string[] reversedArray = GenerateSubArray(inputNorm, 4, 7);
+        Array.Reverse( reversedArray);
+
+        //this prints the subarrays for testing.
+        Console.WriteLine("New Array:");
+        foreach (string item in newArray)
         {
-            //check for vertical mirror at each position. Return the mirrored position.
+            Console.WriteLine(item);
+        }
+        Console.WriteLine("Flipped Array:");
+        foreach (string item in reversedArray)
+        {
+            Console.WriteLine(item);
         }
 
-        for (int i = 0; i < inputFlip.Length; i++)
+        //this confirms if the sub arrays are equal.
+        if (newArray.SequenceEqual(reversedArray))
         {
-            //check for horitzonal mirror at each position. Return the mirrored position.
+            Console.WriteLine("mirrored");
         }
+
 
 
     }
@@ -49,5 +64,23 @@ class day_13_program
         }
 
         return result.ToArray();
+    }
+
+    static T[] GenerateSubArray<T>(T[] array, int start, int end)
+    {
+        // Validate input indices
+        if (start < 0 || end > array.Length || start > end)
+        {
+            throw new ArgumentOutOfRangeException("Invalid start or end position.");
+        }
+
+        // Create a new array segment based on the specified range
+        ArraySegment<T> arraySegment = new ArraySegment<T>(array, start, end - start);
+
+        // Convert the array segment to a new array
+        T[] newArray = new T[arraySegment.Count];
+        arraySegment.CopyTo(newArray);
+
+        return newArray;
     }
 }
