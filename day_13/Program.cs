@@ -12,12 +12,12 @@ class day_13_program
 
         for (int i = 0; i < inputNorm.Length; i++)
         {
-            //check for vertical mirror at each position
+            //check for vertical mirror at each position. Return the mirrored position.
         }
 
         for (int i = 0; i < inputFlip.Length; i++)
         {
-            //check for horitzonal mirror at each position
+            //check for horitzonal mirror at each position. Return the mirrored position.
         }
 
 
