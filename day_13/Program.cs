@@ -9,6 +9,16 @@ class day_13_program
         fileReader f = new fileReader();
         string[] inputNorm = f.readFile("day_13.txt");
         string[] inputFlip = GetStringsFromColumns(inputNorm);
+        int halfwayPoint;
+        
+        if (inputNorm.Length / 2 % 2 == 0)
+        {
+            halfwayPoint = inputNorm.Length;
+        }
+        else
+        {
+            halfwayPoint = inputNorm.Length + 1;
+        }
 
 
         //generates subArrays. This is an example.
