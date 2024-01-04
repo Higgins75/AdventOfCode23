@@ -20,29 +20,32 @@ class day_13_program
             halfwayPoint = inputNorm.Length + 1;
         }
 
-
-        //generates subArrays. This is an example.
-        string[] newArray = GenerateSubArray(inputNorm, 1, 4);
-        string[] reversedArray = GenerateSubArray(inputNorm, 4, 7);
-        Array.Reverse( reversedArray);
-
-        //this prints the subarrays for testing.
-        Console.WriteLine("New Array:");
-        foreach (string item in newArray)
+        for(int i = halfwayPoint; i < inputNorm.Length; i++)
         {
-            Console.WriteLine(item);
-        }
-        Console.WriteLine("Flipped Array:");
-        foreach (string item in reversedArray)
-        {
-            Console.WriteLine(item);
+                    //generates subArrays. This is an example.
+            string[] newArray = GenerateSubArray(inputNorm, 1, 4);
+            string[] reversedArray = GenerateSubArray(inputNorm, 4, 7);
+            Array.Reverse(reversedArray);         
         }
 
-        //this confirms if the sub arrays are equal.
-        if (newArray.SequenceEqual(reversedArray))
-        {
-            Console.WriteLine("mirrored");
-        }
+
+            //this prints the subarrays for testing.
+        // Console.WriteLine("New Array:");
+        // foreach (string item in newArray)
+        // {
+        //     Console.WriteLine(item);
+        // }
+        // Console.WriteLine("Flipped Array:");
+        // foreach (string item in reversedArray)
+        // {
+        //     Console.WriteLine(item);
+        // }
+
+        // //this confirms if the sub arrays are equal.
+        // if (newArray.SequenceEqual(reversedArray))
+        // {
+        //     Console.WriteLine("mirrored");
+        // }
 
 
 
