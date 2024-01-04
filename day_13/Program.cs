@@ -22,7 +22,7 @@ class day_13_program
 
         for(int i = halfwayPoint; i < inputNorm.Length; i++)
         {
-                    //generates subArrays. This is an example.
+            //generates subArrays.
             string[] newArray = GenerateSubArray(inputNorm, 1, 4);
             string[] reversedArray = GenerateSubArray(inputNorm, 4, 7);
             Array.Reverse(reversedArray);         
@@ -51,9 +51,14 @@ class day_13_program
 
     }
 
-    static bool checkMirror(string[] input, int positionToReflect)
+    static bool checkMirror(string[] firstHalf, string[] secondHalf)
     {
-        return false;
+        if (firstHalf.SequenceEqual(secondHalf))
+        {
+            Console.WriteLine("mirrored");
+            return true;
+        }
+        else return false;
     }
 
     static string[] GetStringsFromColumns(string[] baseStrings)
