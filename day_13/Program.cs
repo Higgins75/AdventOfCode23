@@ -9,6 +9,7 @@ class day_13_program
         fileReader f = new fileReader();
         string[] inputNorm = f.readFile("day_13.txt");
         string[] inputFlip = GetStringsFromColumns(inputNorm);
+        int inputLength = inputNorm.Length;
         int halfwayPoint;
         
         if (inputNorm.Length / 2 % 2 == 0)
@@ -20,42 +21,21 @@ class day_13_program
             halfwayPoint = inputNorm.Length + 1;
         }
 
-        for(int i = halfwayPoint; i < inputNorm.Length; i++)
+        for(int i = 0; i <= halfwayPoint; i++)
         {
             //generates subArrays.
-            string[] newArray = GenerateSubArray(inputNorm, 1, 4);
-            string[] reversedArray = GenerateSubArray(inputNorm, 4, 7);
-            Array.Reverse(reversedArray);         
+            string[] newArray = GenerateSubArray(inputNorm, i, halfwayPoint - i);
+            string[] reversedArray = GenerateSubArray(inputNorm, halfwayPoint - i, inputLength - i);
+            Array.Reverse(reversedArray);
+            checkMirror(newArray, reversedArray);         
         }
-
-
-            //this prints the subarrays for testing.
-        // Console.WriteLine("New Array:");
-        // foreach (string item in newArray)
-        // {
-        //     Console.WriteLine(item);
-        // }
-        // Console.WriteLine("Flipped Array:");
-        // foreach (string item in reversedArray)
-        // {
-        //     Console.WriteLine(item);
-        // }
-
-        // //this confirms if the sub arrays are equal.
-        // if (newArray.SequenceEqual(reversedArray))
-        // {
-        //     Console.WriteLine("mirrored");
-        // }
-
-
-
     }
 
     static bool checkMirror(string[] firstHalf, string[] secondHalf)
     {
         if (firstHalf.SequenceEqual(secondHalf))
         {
-            Console.WriteLine("mirrored");
+            // Console.WriteLine("mirrored");
             return true;
         }
         else return false;
